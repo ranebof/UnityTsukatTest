@@ -4,9 +4,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController ControllerComponent;
+
     public float moveSpeed = 5f;
-    Vector3 playerVelocity;
     bool isGrounded;
+
+
+    Vector3 playerVelocity;
     
 
     private void Start()
@@ -18,14 +21,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ControllerComponent)
         {
-            //Player Movement
-
             float horizontalInput = Input.GetAxis("HorizontalArrowsInput");
             float verticalInput = Input.GetAxis("VerticalArrowsInput");
+
+
             float maxXpos = 40f;
             float maxXposN = -40f;
+            
             float maxZpos = 40f;
             float maxZposN = -40f;
+
 
             isGrounded = ControllerComponent.isGrounded;
 
@@ -59,10 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
             playerVelocity.y += Physics.gravity.y * Time.deltaTime;
             ControllerComponent.Move(playerVelocity * Time.deltaTime);
-
-            //Player Rotation
-
-            //float mouseX = Input.GetAxis("");
 
         }
 
