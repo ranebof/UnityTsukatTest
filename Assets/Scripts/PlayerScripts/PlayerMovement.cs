@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     bool isGrounded;
+    public int Health = 100;
 
 
     Vector3 playerVelocity;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         ControllerComponent = GetComponent<CharacterController>();
     }
 
-    private void Update()
+    void Update()
     {
         if (ControllerComponent)
         {
@@ -65,7 +66,17 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y += Physics.gravity.y * Time.deltaTime;
             ControllerComponent.Move(playerVelocity * Time.deltaTime);
 
+            if(Health <= 0)
+            {
+                Destroy(gameObject);
+            }
+
         }
 
+    }
+
+    public void MakeDamage(int Damage)
+    {
+        Health -= Damage;
     }
 }
