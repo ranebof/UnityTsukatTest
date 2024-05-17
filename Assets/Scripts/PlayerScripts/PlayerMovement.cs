@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -7,10 +8,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5f;
     bool isGrounded;
-    public int Health = 100;
+    public float Health = 100f;
 
 
     Vector3 playerVelocity;
+    public Image HealthBar;
     
 
     private void Start()
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        Health = Mathf.Clamp(Health, 0f, 100f);
         if (ControllerComponent)
         {
             float horizontalInput = Input.GetAxis("HorizontalArrowsInput");
@@ -75,8 +78,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void MakeDamage(int Damage)
+    public void MakeDamage(float Damage)
     {
         Health -= Damage;
+        HealthBar.fillAmount = Health / 100f;
     }
 }

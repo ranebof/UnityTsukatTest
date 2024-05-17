@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
         if (other.gameObject == player)
         {
             Destroy(gameObject);
-            player.GetComponent<PlayerMovement>().MakeDamage(10);
+            player.GetComponent<PlayerMovement>().MakeDamage(20);
         }
     }
 }
