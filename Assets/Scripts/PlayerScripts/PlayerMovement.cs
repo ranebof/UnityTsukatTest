@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -74,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(gameObject);
             }
 
+        }
+
+        if(Health <= 0)
+        {
+            SceneManager.LoadSceneAsync(1);
         }
 
     }
